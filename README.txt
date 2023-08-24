@@ -1,44 +1,60 @@
-Do at least ONE of the following tasks: refactor is mandatory. Write tests is optional, will be good bonus to see it. 
-Please do not invest more than 2-4 hours on this.
-Upload your results to a Github repo, for easier sharing and reviewing.
-
-Thank you and good luck!
+//What i have done 
+1. Readme described above (point X above) + refactored code
 
 
+Code improvement what i have done:-
 
-Code to refactor
-=================
-1) app/Http/Controllers/BookingController.php
-2) app/Repository/BookingRepository.php
+        Add all business logic in BookingController and interaction with DB in BookingRepository.
 
-Code to write tests (optional)
-=====================
-3) App/Helpers/TeHelper.php method willExpireAt
-4) App/Repository/UserRepository.php, method createOrUpdate
+        Example:- 
+        Method:-updateJobAttributes
+        Method:-updateDistance
+        In Both of the above method DB Query is written so i make two new methods and move that logic into BookingRepository.
 
+Big Method Convert into Small methods that is resuable.
 
-----------------------------
+        Example:-
+        BookingRepository
 
-What I expect in your repo:
+        Method:-store  
+        In store method very large number of code written so i convert into small chunks nd made these methods.
 
-X. A readme with:   Your thoughts about the code. What makes it amazing code. Or what makes it ok code. Or what makes it terrible code. How would you have done it. Thoughts on formatting, structure, logic.. The more details that you can provide about the code (what's terrible about it or/and what is good about it) the easier for us to assess your coding style, mentality etc
+        BookingRepository
+        Method:-validateBookingData
+        Method:-setGenderAndCertified
+        Method:-getJobType
+        Method:-getJobForArray
 
-And 
+Exception Handling:
+        In Exception Handling we use try and catch block so we easily handle exception.
 
-Y.  Refactor it if you feel it needs refactoring. The more love you put into it. The easier for us to asses your thoughts, code principles etc
+        Example:-
+        BookingController:distanceFeed
 
+Oop Usage :-
+        parent constructor use for Job Model that set in base repository so we easily call with $this->method.Use private function as well.
+        Example:-  function __construct(Job $model, MailerInterface $mailer).
 
-IMPORTANT: Make two commits. First commit with original code. Second with your refactor so we can easily trace changes. 
+//What is Better For Code Improvement 
+These point is necessary for code Refactor
 
+        Code Reusability:
+        By encapsulating data access logic within repositories, you can reuse this logic across different parts of your application. This reduces code duplication and 
+        promotes a DRY (Don't Repeat Yourself) coding style.
 
-NB: you do not need to set up the code on local and make the web app run. It will not run as its not a complete web app. This is purely to assess you thoughts about code, formatting, logic etc
+        Database-Logic: 
+        In Controller Code  business logic without involving the actual database, making tests faster and more reliable.Database logic we are written in repository 
+        and use $this->model as a parent constructor.
 
+        Separation of Concerns:
+        The Repository Pattern separates data access concerns from business logic. This separation enhances the overall maintainability of your codebase as it's easier 
+        to make changes or optimizations to data access code without affecting the application's core functionality.
 
-===== So expected output is a GitHub link with either =====
+        Eloquent Integration:
+        Laravel's Eloquent ORM is a powerful tool for database interaction. Repositories can wrap Eloquent queries, making it easier to manage complex queries, 
+        apply filters, and enforce security checks within the repository layer.
 
-1. Readme described above (point X above) + refactored code 
-OR
-2. Readme described above (point X above) + refactored core + a unit test of the code that we have sent
-
-Thank you!
+        Improved Code Readability:
+        By using repositories, you create a clear and consistent way of accessing data throughout your application. This improves code readability as developers can easily 
+        understand where and how data is being fetched and manipulated.
 
